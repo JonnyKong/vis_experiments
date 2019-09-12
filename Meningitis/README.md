@@ -14,7 +14,7 @@
 
 3. Hovering over countries: hover over *"Greenland"*, *"Canada"*, *"United States"*, and *"Mexico"*
 
-4. ~~Selecting a country~~ (This is identical to step 3)
+4. Selecting countries: select *"Greenland"*, *"Canada"*, *"United States"*, and *"Mexico"*
 
 ### Experiment 3: generate a workload from the above queries
 

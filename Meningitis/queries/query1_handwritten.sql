@@ -11,7 +11,8 @@ FROM    meningitis
 WHERE   cause_name IN ('Meningococcal meningitis', 
                        'Neonatal sepsis and other neonatal infections',
                        'Other meningitis',
-                       'Pneumococcal meningitis');
+                       'Pneumococcal meningitis')
+        AND measure_name = 'Deaths';
 
 SELECT  location_name, sum(val)
 FROM    meningitis
@@ -19,6 +20,7 @@ WHERE   cause_name IN ('Meningococcal meningitis',
                        'Neonatal sepsis and other neonatal infections',
                        'Other meningitis',
                        'Pneumococcal meningitis')
+        AND measure_name = 'Deaths'
 GROUP BY location_name;
 
 
@@ -26,11 +28,13 @@ SELECT  sum(val)
 FROM    meningitis
 WHERE   age_name IN ('All Ages', 
                      'Late Neonatal',
-                     'Early Neonatal');
+                     'Early Neonatal')
+        AND measure_name = 'Deaths';
 
 SELECT  location_name, sum(val)
 FROM    meningitis
 WHERE   age_name IN ('All Ages', 
                      'Late Neonatal',
                      'Early Neonatal')
+        AND measure_name = 'Deaths'
 GROUP BY location_name;

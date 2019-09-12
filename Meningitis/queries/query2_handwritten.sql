@@ -8,39 +8,47 @@
 
 SELECT  sum(val)
 FROM    meningitis
-WHERE   year_value = '2014';
+WHERE   year_value = '2014' 
+        AND measure_name = 'Deaths';
 
 SELECT  location_name, sum(val)
 FROM    meningitis
 WHERE   year_value = '2014'
+        AND measure_name = 'Deaths'
 GROUP BY location_name;
 
 
 SELECT  sum(val)
 FROM    meningitis
-WHERE   year_value = '2015';
+WHERE   year_value = '2015' 
+        AND measure_name = 'Deaths';
 
 SELECT  location_name, sum(val)
 FROM    meningitis
-WHERE   year_value = '2015'
+WHERE   year_value = '2015' 
+        AND measure_name = 'Deaths'
 GROUP BY location_name;
 
 
 SELECT  sum(val)
 FROM    meningitis
-WHERE   year_value = '2016';
+WHERE   year_value = '2016' 
+        AND measure_name = 'Deaths';
 
 SELECT  location_name, sum(val)
 FROM    meningitis
-WHERE   year_value = '2016'
+WHERE   year_value = '2016' 
+        AND measure_name = 'Deaths'
 GROUP BY location_name;
 
 
 SELECT  sum(val)
 FROM    meningitis
-WHERE   year_value = '2017';
+WHERE   year_value = '2017' 
+        AND measure_name = 'Deaths';
 
 SELECT  location_name, sum(val)
 FROM    meningitis
-WHERE   year_value = '2017'
+WHERE   year_value = '2017' 
+        AND measure_name = 'Deaths'
 GROUP BY location_name;
