@@ -1,5 +1,5 @@
 -- =============================================
--- Query 3: Selecting countries
+-- Query 4: Selecting countries
 --  Select Greenland, Canada, United States, and Mexico
 --
 -- Author:  jonnykong@cs.ucla.edu
