@@ -11,12 +11,14 @@
 import asyncio
 import pymssql
 
+SQLSERVER_PWD = '<your_pwd_here>'
+
 
 class RefreshDaemon(object):
     def __init__(self):
         self.server = 'localhost'
         self.user = 'sa'
-        self.password = 'IliveINqingdao36'
+        self.password = SQLSERVER_PWD
         self.database = 'viz'
         self.conn = pymssql.connect(server=self.server,
                                     user=self.user,
