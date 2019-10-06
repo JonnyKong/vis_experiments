@@ -12,13 +12,13 @@ Interactions:
    "prefix_sums": {
      "person_1_id": [
        [ day1, num_agree, num_total ],
-   	  [ day2, num_agree, num_total ],
-   	  ...
+       [ day2, num_agree, num_total ],
+       ...
      ],
      "person_2_id": [
        [ day1, num_agree, num_total ],
-   	  [ day2, num_agree, num_total ],
-   	  ...
+       [ day2, num_agree, num_total ],
+       ...
      ],
      ...
    }
@@ -37,7 +37,7 @@ Interactions:
    ```
    "vote_counts": [
      [ day1: num_vote_day1 ],
-    	[ day2: num_vote_day2 ],
+     [ day2: num_vote_day2 ],
     	...
    ]
    ```
