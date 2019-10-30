@@ -1,0 +1,41 @@
+\input{header.tex}
+\begin{document}
+
+\section*{Manual Optimization Decisions}
+
+\begin{problem}[Physical Visualization Design Problem]
+  Given an interface $I$, and a set of constraints, and a user interaction trace, identify the optimal placement policy $P^*$ that will minimize the response time for the trace.
+\end{problem}
+
+Notations:\\
+
+\hspace{10mm} $M_c$: Client memory size\\
+
+\hspace{10mm} $M_s$: Server memory size\\
+
+\hspace{10mm} $D_s$: Server disk size\\
+
+Let:
+\begin{equation}
+	x_{ij}=
+	\begin{cases}
+		1 \hspace{10mm} \text{if place result of $query_i$ on $storage_j$} \\
+		0 \hspace{10mm} \text{otherwise}
+	\end{cases}
+\end{equation}
+
+where storage 0, 1, 2 are client memory, server memory, server disk respectively. Suppose $r_{ij}$ is the delay we can reduce by placing the result of $query_i$ on $storage_j$ given by some cost model. We can solve the matrix $x$ using integer programming:\\
+
+\hspace{10mm} Maximize $\sum_{i=1}^{n} \sum_{j=1}^{3} x_{ij} r_{ij}$\\
+
+subject to:\\
+
+\hspace{10mm} $\sum_{j=1}^{3} k_{ij} \le 1, (i=1,2,...,n)$ \hspace{10mm} -- Placement is non-inclusive\\
+
+\hspace{10mm} $\sum_{i=1}^{n} k_{i0} \le M_c$ \hspace{10mm} -- Client memory size\\
+
+\hspace{10mm} $\sum_{i=1}^{n} k_{i1} \le M_s$ \hspace{10mm} -- Server memory size\\
+
+\hspace{10mm} $\sum_{i=1}^{n} k_{i2} \le D_s$ \hspace{10mm} -- Server disk size\\
+  
+\end{document}
