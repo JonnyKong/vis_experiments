@@ -7,35 +7,27 @@
   Given an interface $I$, and a set of constraints, and a user interaction trace, identify the optimal placement policy $P^*$ that will minimize the response time for the trace.
 \end{problem}
 
-Notations:\\
+Suppose we have a hierarchy of $k$ different storages, ranging from small (fast) to large (slow):\\
 
-\hspace{10mm} $M_c$: Client memory size\\
-
-\hspace{10mm} $M_s$: Server memory size\\
-
-\hspace{10mm} $D_s$: Server disk size\\
+\hspace{10mm} $S=\{S_1, S_2, ..., S_k\}$\\
 
 Let:
 \begin{equation}
 	x_{ij}=
 	\begin{cases}
-		1 \hspace{10mm} \text{if place result of $query_i$ on $storage_j$} \\
+		1 \hspace{10mm} \text{if place result of $query_i$ on $S_j$} \\
 		0 \hspace{10mm} \text{otherwise}
 	\end{cases}
 \end{equation}
 
-where storage 0, 1, 2 are client memory, server memory, server disk respectively. Suppose $r_{ij}$ is the delay we can reduce by placing the result of $query_i$ on $storage_j$ given by some cost model. We can solve the matrix $x$ using integer programming:\\
+Suppose $l(q, S)$ is the delay we can reduce by placing the result of query $q$ on storage $S$ given by some cost model. We can minimize the total delay by solving for the matrix $x$ using integer programming:\\
 
-\hspace{10mm} Maximize $\sum_{i=1}^{n} \sum_{j=1}^{3} x_{ij} r_{ij}$\\
+\hspace{10mm} Minimize $\sum_{i=1}^{n} \sum_{j=1}^{k} x_{ij} l(q_i, s_j)$\\
 
 subject to:\\
 
-\hspace{10mm} $\sum_{j=1}^{3} k_{ij} \le 1, (i=1,2,...,n)$ \hspace{10mm} -- Placement is non-inclusive\\
+\hspace{10mm} $\sum_{j=1}^{k} x_{ij} \le 1, (i=1,2,...,n)$ \hspace{10mm} -- Placement is non-inclusive\\
 
-\hspace{10mm} $\sum_{i=1}^{n} k_{i0}s_i \le M_c$ \hspace{10mm} -- Client memory size\\
-
-\hspace{10mm} $\sum_{i=1}^{n} k_{i1}s_i \le M_s$ \hspace{10mm} -- Server memory size\\
-
-\hspace{10mm} $\sum_{i=1}^{n} k_{i2}s_i \le D_s$ \hspace{10mm} -- Server disk size\\
+\hspace{10mm} $\sum_{i=1}^{n} x_{ij} s_i \le S_j, (j=1,2,...,k)$ \hspace{10mm} -- Placement need to fit for every storage device\\
   
 \end{document}
