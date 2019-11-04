@@ -1,0 +1,42 @@
+\input{header.tex}
+\begin{document}
+
+\section*{Visualization Priority}
+
+\begin{problem}[Visualization Priority]
+  A syntax for developers to specify visualization constrains and priorities, in order to come up with placement policies.
+\end{problem}
+
+Suppose we have:\\
+
+\hspace{10mm} Visualizations $V = \{V_1, V_2, ..., V_n\}$\\
+
+\hspace{10mm} Interactions $I = \{I_1, I_2, ..., I_n\}$\\
+
+where $V$ and $I$ have many-to-many relations. For example, we might have a view that can be updated by multiple different interactions, and we can have an interaction that changes multiple views simultaneously. This means prioritization should be expressed at the granularity of <$V_m$, $I_n$> pairs.\\
+
+Specifically, there could be hard and soft constraints. Developers specify hard constraints like ``Interaction $I_1$ should update $V_2$ in 100ms for 95\% of the time”, and soft constraints like “Interaction $I_1$ updating $V_1$ should be faster than $I_2$ updating $V_2$”. \\
+
+For hard constraints, the goal would be to find the lowest priority that meets each of the constrains, if there exists such a placement. \\
+
+If developers don't have specific latency bounds in mind, they can specify soft constraints. A naive approach would be to let the developer to specify the weights of selected <$V_m$, $I_n$> pairs, and the system calculates a placement policy that minimizes the weighted average latency based on remaining resources. The execution time should also be considered. \\
+
+An example spec would be:\\
+
+Hard:
+
+\textit{($I_1$, $V_1$) within 100ms with 100\% confidence}
+
+\textit{($I_2$, *) within 200ms with 95\% confidence}\\
+
+Soft:
+
+\textit{($I_1$, $V_1$) weight 2}
+
+\textit{($I_1$, $V_2$) weight 3}
+
+\textit{(*, $V_1$) weight 5}\\
+
+ For example, one may use "\textit{(*, $V_1$) weight 1, (*, $V_2$) weight 1}" to suggest that ``most interactions that updates $V_1$ and $V_2$ should be prioritized".
+
+\end{document}
