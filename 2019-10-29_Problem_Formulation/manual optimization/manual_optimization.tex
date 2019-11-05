@@ -20,7 +20,7 @@ Let:
 	\end{cases}
 \end{equation}
 
-Suppose $l(q, S)$ is the delay we can reduce by placing the result of query $q$ on storage $S$ given by some cost model. We can minimize the total delay by solving for the matrix $x$ using integer programming:\\
+Suppose $l(q, S)$ is the query latency placing the result of query $q$ on storage $S$ given by some cost model. We can minimize the total delay by solving for the matrix $x$ using integer programming:\\
 
 \hspace{10mm} Minimize $\sum_{i=1}^{n} \sum_{j=1}^{k} x_{ij} l(q_i, s_j)$\\
 
