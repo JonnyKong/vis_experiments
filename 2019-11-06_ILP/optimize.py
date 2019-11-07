@@ -36,7 +36,7 @@ def solve(storage_budget: List[float],
         mdl.add(mdl.sum([X[i][j] for j in range(n_storage)]) == 1)
 
     print('Solving model....')
-    msol = mdl.solve(TimeLimit = 10)
+    msol = mdl.solve(TimeLimit=10)
 
     if msol:
         sol = [[msol[X[i][j]] for j in range(n_storage)] for i in range(n_query)]
@@ -54,7 +54,7 @@ def print_grid(X):
 
 if __name__ == '__main__':
     storage_budget = [2, 5, 10, 10000]
-    query_size = [4,2,4,5,3,2,3,4,5,6]
+    query_size = [4, 2, 4, 5, 3, 2, 3, 4, 5, 6]
     query_latency = [
         [1, 2, 3, 4],
         [1, 2, 3, 4],
